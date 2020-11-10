@@ -6,7 +6,7 @@ import java.net.{ServerSocket, Socket}
 import scala.annotation.tailrec
 import scala.util.{Failure, Success, Try}
 
-object Hello extends App {
+object JavaServer {
   @tailrec
   def loop(listener: ServerSocket): Unit = {
     val socket = listener.accept()
