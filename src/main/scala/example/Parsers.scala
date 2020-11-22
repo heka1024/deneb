@@ -1,12 +1,13 @@
 package example
 
-import cats.Monad
-import cats.implicits._
+import cats._, cats.data._, cats.implicits._
 
-case class Parser[+A](a: A) extends Monad[Parser] {
-  override def flatMap[A, B](fa: Parser[A])(f: A => Parser[B]): Parser[B] = ???
+object Parsers {
+  val firsts = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ"
+  val seconds = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ"
+  val thirds = "ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ"
 
-  override def tailRecM[A, B](a: A)(f: A => Parser[Either[A, B]]): Parser[B] = ???
-
-  override def pure[A](x: A): Parser[A] = ???
+  "가나다라마바사아자차"
+    .map { _.toLong - 44032 }
+    .map { _ / (21 * 28) }
 }
